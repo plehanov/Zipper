@@ -25,12 +25,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Zipper\\": "src/Zipper"
+            "Chumper\\Zipper\\": "src/Chumper/Zipper"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Zipper\\": "tests/"
+            "Chumper\\Zipper\\": "tests/"
         }
     },
     "config": {
