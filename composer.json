@@ -1,18 +1,9 @@
 {
-    "name": "chumper/zipper",
+    "name": "suemitsu/zipper",
     "type": "library",
     "description": "This is a little neat helper for the ZipArchive methods with handy functions",
     "keywords": ["laravel", "ZIP", "Archive"],
-    "homepage": "http://github.com/Chumper/zipper",
     "license": "Apache2",
-    "authors": [
-        {
-            "name": "Nils Plaschke",
-            "email": "github@nilsplaschke.de",
-            "homepage": "http://nilsplaschke.de",
-            "role": "Developer"
-        }
-    ],
     "require": {
         "php": ">=5.6.0",
         "ext-zip": "*",
@@ -25,12 +16,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Chumper\\Zipper\\": "src/Chumper/Zipper"
+            "Zipper\\": "src/Zipper"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Chumper\\Zipper\\": "tests/"
+            "Zipper\\": "tests/"
         }
     },
     "config": {
@@ -39,10 +30,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Chumper\\Zipper\\ZipperServiceProvider"
+                "Zipper\\ZipperServiceProvider"
             ],
             "aliases": {
-                "Zipper": "Chumper\\Zipper\\Zipper"
+                "Zipper": "Zipper\\Zipper"
             }
         }
     },
