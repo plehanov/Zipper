@@ -39,10 +39,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Zipper\\ZipperServiceProvider"
+                "Chumper\\Zipper\\ZipperServiceProvider"
             ],
             "aliases": {
-                "Zipper": "Zipper\\Zipper"
+                "Zipper": "Chumper\\Zipper\\Zipper"
             }
         }
     },
