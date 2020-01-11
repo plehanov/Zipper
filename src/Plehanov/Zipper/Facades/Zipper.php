@@ -1,6 +1,6 @@
 <?php
 
-namespace Chumper\Zipper\Facades;
+namespace Plehanov\Zipper\Facades;
 
 use Illuminate\Support\Facades\Facade;
 

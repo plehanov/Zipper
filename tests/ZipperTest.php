@@ -1,6 +1,6 @@
 <?php
 
-namespace Chumper\Zipper;
+namespace Plehanov\Zipper;
 
 use Exception;
 use Illuminate\Filesystem\Filesystem;
@@ -8,10 +8,10 @@ use InvalidArgumentException;
 use Mockery;
 use RuntimeException;
 
-class ZipperTest extends \PHPUnit_Framework_TestCase
+class ZipperTest extends \PHPUnit\Framework\TestCase
 {
     /**
-     * @var \Chumper\Zipper\Zipper
+     * @var \Plehanov\Zipper\Zipper
      */
     public $archive;
 
@@ -20,21 +20,21 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
      */
     public $file;
 
-    protected function setUp()
+    public function setUp(): void
     {
         $this->file = Mockery::mock(new Filesystem());
         $this->archive = new Zipper($this->file);
         $this->archive->make('foo', new ArrayArchive('foo', true));
     }
 
-    protected function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
 
     public function testMake()
     {
-        $this->assertSame('Chumper\\Zipper\\ArrayArchive', $this->archive->getArchiveType());
+        $this->assertSame('Plehanov\\Zipper\\ArrayArchive', $this->archive->getArchiveType());
         $this->assertSame('foo', $this->archive->getFilePath());
     }
 
@@ -195,6 +195,8 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
 
         $this->archive
             ->extractTo(getcwd(), ['foo'], Zipper::WHITELIST);
+
+        $this->assertTrue(true);
     }
 
     public function testExtractToThrowsExceptionWhenCouldNotCreateDirectory()
@@ -242,9 +244,11 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
 
         $this->archive
             ->extractTo(getcwd(), ['baz'], Zipper::WHITELIST);
+
+        $this->assertTrue(true);
     }
 
-    public function testExtractWhiteListWithExactMatching()
+    public function testExtractWhiteListWithExactMatching(): void
     {
         $this->file->shouldReceive('isFile')->andReturn(true);
         $this->file->shouldReceive('makeDirectory')->andReturn(true);
@@ -252,14 +256,17 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
         $this->archive
             ->folder('foo/bar')
             ->add('baz')
-            ->add('baz.log');
+            ->add('baz.log')
+            ->add('bar.log');
 
         $this->file
             ->shouldReceive('put')
             ->with(realpath(null).DIRECTORY_SEPARATOR.'baz', 'foo/bar/baz');
 
         $this->archive
-            ->extractTo(getcwd(), ['baz'], Zipper::WHITELIST | Zipper::EXACT_MATCH);
+            ->extractTo(getcwd(), ['baz', 'foo'], Zipper::WHITELIST | Zipper::EXACT_MATCH);
+
+        $this->assertTrue(true);
     }
 
     public function testExtractWhiteListWithExactMatchingFromSubDirectory()
@@ -285,6 +292,8 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
             ->extractTo(getcwd(), ['subDirectory/bazInSubDirectory'], Zipper::WHITELIST | Zipper::EXACT_MATCH);
 
         $this->file->shouldHaveReceived('makeDirectory')->with($subDirectoryPath, 0755, true, true);
+
+        $this->assertTrue(true);
     }
 
     public function testExtractToIgnoresBlackListFile()
@@ -302,6 +311,8 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
         $this->file->shouldNotReceive('put')->with(realpath(null).DIRECTORY_SEPARATOR.'bar', 'bar');
 
         $this->archive->extractTo(getcwd(), ['bar'], Zipper::BLACKLIST);
+
+        $this->assertTrue(true);
     }
 
     public function testExtractBlackListFromSubDirectory()
@@ -327,6 +338,8 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
         $this->file->shouldNotReceive('put')->with($currentDir.DIRECTORY_SEPARATOR.'rootLevelFile', 'rootLevelFile');
 
         $this->archive->extractTo($currentDir, ['fileBlackListedInSubDir'], Zipper::BLACKLIST);
+
+        $this->assertTrue(true);
     }
 
     public function testExtractBlackListFromSubDirectoryWithExactMatching()
@@ -345,6 +358,8 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
         $this->file->shouldReceive('put')->with(realpath(null).DIRECTORY_SEPARATOR.'baz.log', 'foo/bar/baz.log');
 
         $this->archive->extractTo(getcwd(), ['baz'], Zipper::BLACKLIST | Zipper::EXACT_MATCH);
+
+        $this->assertTrue(true);
     }
 
     public function testExtractMatchingRegexFromSubFolder()
@@ -374,6 +389,8 @@ class ZipperTest extends \PHPUnit_Framework_TestCase
         $this->file->shouldNotReceive('put')->with(realpath(null).DIRECTORY_SEPARATOR.'subFolder/subFolderFileToIgnore', 'foo/bar/subFolder/subFolderFileToIgnore');
 
         $this->archive->extractMatchingRegex(getcwd(), '/\.log$/i');
+
+        $this->assertTrue(true);
     }
 
     public function testExtractMatchingRegexThrowsExceptionWhenRegexIsEmpty()

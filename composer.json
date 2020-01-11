@@ -3,13 +3,19 @@
     "type": "library",
     "description": "This is a little neat helper for the ZipArchive methods with handy functions",
     "keywords": ["laravel", "ZIP", "Archive"],
-    "homepage": "http://github.com/Chumper/zipper",
+    "homepage": "http://github.com/Plehanov/zipper",
     "license": "Apache-2.0",
     "authors": [
         {
             "name": "Nils Plaschke",
             "email": "github@nilsplaschke.de",
             "homepage": "http://nilsplaschke.de",
+            "role": "Creator"
+        },
+        {
+            "name": "Valentin Plehanov",
+            "email": "valentin@plehanov.pro",
+            "homepage": "http://plehanov.pro",
             "role": "Developer"
         }
     ],
@@ -25,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "Chumper\\Zipper\\": "src/Chumper/Zipper"
+            "Plehanov\\Zipper\\": "src/Plehanov/Zipper"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Chumper\\Zipper\\": "tests/"
+            "Plehanov\\Zipper\\": "tests/"
         }
     },
     "config": {
@@ -39,10 +45,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Chumper\\Zipper\\ZipperServiceProvider"
+                "Plehanov\\Zipper\\ZipperServiceProvider"
             ],
             "aliases": {
-                "Zipper": "Chumper\\Zipper\\Zipper"
+                "Zipper": "Plehanov\\Zipper\\Zipper"
             }
         }
     },

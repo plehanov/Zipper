@@ -1,6 +1,6 @@
 <?php
 
-namespace Chumper\Zipper\Repositories;
+namespace Plehanov\Zipper\Repositories;
 
 use Exception;
 use Mockery;
@@ -13,7 +13,7 @@ use ZipArchive;
  * Time: 20:57
  * To change this template use File | Settings | File Templates.
  */
-class ZipRepositoryTest extends \PHPUnit_Framework_TestCase
+class ZipRepositoryTest extends \PHPUnit\Framework\TestCase
 {
     /**
      * @var ZipRepository
@@ -25,13 +25,13 @@ class ZipRepositoryTest extends \PHPUnit_Framework_TestCase
      */
     public $mock;
 
-    public function setUp()
+    public function setUp(): void
     {
         $this->mock = Mockery::mock(new ZipArchive());
         $this->zip = new ZipRepository('foo', true, $this->mock);
     }
 
-    protected function tearDown()
+    public function tearDown(): void
     {
         Mockery::close();
     }
@@ -65,6 +65,8 @@ class ZipRepositoryTest extends \PHPUnit_Framework_TestCase
         $this->zip->addFile('bar', 'bar');
         $this->zip->addFile('bar', 'foo/bar');
         $this->zip->addFile('foo/bar', 'bar');
+
+        $this->assertTrue(true);
     }
 
     public function testRemoveFile()
@@ -74,6 +76,8 @@ class ZipRepositoryTest extends \PHPUnit_Framework_TestCase
 
         $this->zip->removeFile('bar');
         $this->zip->removeFile('foo/bar');
+
+        $this->assertTrue(true);
     }
 
     public function testGetFileContent()
@@ -112,5 +116,7 @@ class ZipRepositoryTest extends \PHPUnit_Framework_TestCase
     public function testClose()
     {
         $this->zip->close();
+
+        $this->assertTrue(true);
     }
 }

@@ -7,21 +7,22 @@ Feel free to read the code, to fork it or to use it in whatever way you want.
 
 # Zipper
 
-[![Build Status](https://travis-ci.org/Chumper/Zipper.png)](https://travis-ci.org/Chumper/Zipper)
+[![Build Status](https://travis-ci.org/Plehanov/Zipper.png)](https://travis-ci.org/Plehanov/Zipper)
 
 This is a simple Wrapper around the ZipArchive methods with some handy functions.
 
 ## Installation
 
 1. Add this package to the list of required packages, inside `composer.json`
-  * for Laravel 5: `"chumper/zipper": "1.0.x"`
-  * ~~for Laravel 4: `"chumper/zipper": "0.5.x"`~~
+  * for Laravel 6: `"plehanov/zipper": "2.0.x"`
+  * ~~for Laravel 5: `"plehanov/zipper": "1.0.x"`~~
+  * ~~for Laravel 4: `"plehanov/zipper": "0.5.x"`~~
 2. Run `composer update`
 
 3. Go to `app/config/app.php`
 
-  * add to providers `Chumper\Zipper\ZipperServiceProvider::class`
-  * add to aliases `'Zipper' => Chumper\Zipper\Zipper::class`
+  * add to providers `Plehanov\Zipper\ZipperServiceProvider::class`
+  * add to aliases `'Zipper' => Plehanov\Zipper\Zipper::class`
 
 You can now access Zipper with the `Zipper` alias.
 
@@ -34,7 +35,7 @@ Zipper::make('public/test.zip')->add($files)->close();
 
 ## Another example
 ```php
-$zipper = new \Chumper\Zipper\Zipper;
+$zipper = new \Plehanov\Zipper\Zipper;
 
 $zipper->make('test.zip')->folder('test')->add('composer.json');
 $zipper->zip('test.zip')->folder('test')->add('composer.json','test');

@@ -1,8 +1,9 @@
 <?php
 
-namespace Chumper\Zipper;
+namespace Plehanov\Zipper;
 
-use Chumper\Zipper\Repositories\RepositoryInterface;
+use Illuminate\Support\Str;
+use Plehanov\Zipper\Repositories\RepositoryInterface;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
 
@@ -87,10 +88,10 @@ class Zipper
 
         $objectOrName = $type;
         if (is_string($type)) {
-            $objectOrName = 'Chumper\Zipper\Repositories\\' . ucwords($type) . 'Repository';
+            $objectOrName = 'Plehanov\Zipper\Repositories\\' . ucwords($type) . 'Repository';
         }
 
-        if (!is_subclass_of($objectOrName, 'Chumper\Zipper\Repositories\RepositoryInterface')) {
+        if (!is_subclass_of($objectOrName, 'Plehanov\Zipper\Repositories\RepositoryInterface')) {
             throw new \InvalidArgumentException("Class for '{$objectOrName}' must implement RepositoryInterface interface");
         }
 
@@ -180,7 +181,7 @@ class Zipper
             };
         } else {
             $matchingMethod = function ($haystack) use ($files) {
-                return starts_with($haystack, $files);
+                return Str::startsWith($haystack, $files);
             };
         }
 
@@ -323,7 +324,7 @@ class Zipper
         if (is_array($fileToRemove)) {
             $self = $this;
             $this->repository->each(function ($file) use ($fileToRemove, $self) {
-                if (starts_with($file, $fileToRemove)) {
+                if (Str::startsWith($file, $fileToRemove)) {
                     $self->getRepository()->removeFile($file);
                 }
             });
@@ -593,7 +594,7 @@ class Zipper
         $self = $this;
         $this->repository->each(function ($fileName) use ($path, $matchingMethod, $self) {
             $currentPath = $self->getCurrentFolderWithTrailingSlash();
-            if (!empty($currentPath) && !starts_with($fileName, $currentPath)) {
+            if (!empty($currentPath) && !Str::startsWith($fileName, $currentPath)) {
                 return;
             }
 
