@@ -7,7 +7,7 @@ Feel free to read the code, to fork it or to use it in whatever way you want.
 
 # Zipper
 
-[![Build Status](https://travis-ci.org/Plehanov/Zipper.png)](https://travis-ci.org/Plehanov/Zipper)
+[![Build Status](https://travis-ci.org/plehanov/Zipper.svg?branch=master)](https://travis-ci.org/plehanov/Zipper)
 
 This is a simple Wrapper around the ZipArchive methods with some handy functions.
 
