@@ -6,6 +6,7 @@ use Illuminate\Support\Str;
 use Plehanov\Zipper\Repositories\RepositoryInterface;
 use Exception;
 use Illuminate\Filesystem\Filesystem;
+use Plehanov\Zipper\Repositories\ZipRepository;
 
 /**
  * This Zipper class is a wrapper around the ZipArchive methods with some handy functions
@@ -64,7 +65,7 @@ class Zipper
      */
     public function __destruct()
     {
-        if (is_object($this->repository) || $this->repository->getStatus() !== false) {
+        if ($this->repository instanceof ZipRepository && $this->repository->getStatus() !== false) {
             $this->repository->close();
         }
     }
