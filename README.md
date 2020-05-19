@@ -14,7 +14,8 @@ This is a simple Wrapper around the ZipArchive methods with some handy functions
 ## Installation
 
 1. Add this package to the list of required packages, inside `composer.json`
-  * for Laravel 6: `"plehanov/zipper": "3.x.x"`
+  * for Laravel 7: `"plehanov/zipper": "3.1.x"`
+  * ~~for Laravel 6: `"plehanov/zipper": "3.x.x"`~~
   * ~~for Laravel 5: `"plehanov/zipper": "1.0.x"`~~
   * ~~for Laravel 4: `"plehanov/zipper": "0.5.x"`~~
 2. Run `composer update`
