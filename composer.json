@@ -22,12 +22,12 @@
     "require": {
         "php": ">=7.2.0",
         "ext-zip": "*",
-        "illuminate/support": "^5.8|^6.0",
-        "illuminate/filesystem": "^5.8|^6.0"
+        "illuminate/support": "^5.8|^6.0|^7.0",
+        "illuminate/filesystem": "^5.8|^6.0|^7.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^7.0|^8.0",
-        "mockery/mockery": "^1.2"
+        "phpunit/phpunit": "^7.0|^8.8",
+        "mockery/mockery": "^1.3"
     },
     "autoload": {
         "psr-4": {
